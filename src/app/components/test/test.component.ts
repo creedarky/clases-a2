@@ -18,7 +18,6 @@ export class TestComponent implements OnInit, OnDestroy {
   ngOnInit() {
     this.subscription = this._apiService.albums.subscribe(
       albums => {
-        console.log(albums);
         this.albums = albums;
       });
     this._apiService.getAllAlbums();
