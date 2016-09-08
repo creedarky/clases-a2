@@ -1,7 +1,7 @@
 import {Injectable} from '@angular/core';
 import {Http} from '@angular/http';
 import 'rxjs/add/operator/map';
-import {Observable, BehaviorSubject} from "rxjs/Rx";
+import {Observable, BehaviorSubject} from 'rxjs/Rx';
 
 
 @Injectable()
@@ -16,15 +16,15 @@ export class ApiService {
 
   getAllAlbums() {
     return this.http
-      .get('/api/albums')
+      .get('/data/albums.json')
       .map(res => res.json().albums)
       .subscribe(data => this._albums.next(data));
   }
 
   getAlbum(id) {
     return Observable.forkJoin(
-      this.http.get(`api/albums/${id}`).map(res => res.json().album),
-      this.http.get(`api/albums/${id}/tracks`).map(res => res.json().tracks)
+      this.http.get(`/data/album.json`).map(res => res.json().album),
+      this.http.get(`/data/tracks.json`).map(res => res.json().tracks)
     ).subscribe(data => this._albumData.next(data));
   }
 

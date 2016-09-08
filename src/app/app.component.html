@@ -1,5 +1,19 @@
 <h1>
   {{title}}
 </h1>
+<h2>
+  {{ sayHello() }}
+</h2>
+
+<nav>
+  <ul>
+    <li>
+      <a routerLink="/" routerLinkActive="active">Index</a>
+    </li>
+    <li>
+      <a routerLink="/test" routerLinkActive="active">test</a>
+    </li>
+  </ul>
+</nav>
 
 <router-outlet></router-outlet>

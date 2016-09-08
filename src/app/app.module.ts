@@ -8,13 +8,16 @@ import { AppComponent } from './app.component';
 import { TestDirective } from './common/directives/test.directive';
 import { TestPipe } from './common/pipes/test.pipe';
 import { TestComponent } from './components/test/test.component';
+import { ApiService } from './common/services/api.service';
+import { Test2Component } from './components/test2/test2.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     TestDirective,
     TestPipe,
-    TestComponent
+    TestComponent,
+    Test2Component
   ],
   imports: [
     BrowserModule,
@@ -23,7 +26,8 @@ import { TestComponent } from './components/test/test.component';
     routing
   ],
   providers: [
-    appRoutingProviders
+    appRoutingProviders,
+    ApiService
   ],
   bootstrap: [AppComponent]
 })
