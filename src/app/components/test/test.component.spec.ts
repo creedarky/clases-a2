@@ -3,9 +3,9 @@
 import { TestBed, async, inject } from '@angular/core/testing';
 import { TestComponent } from './test.component';
 import {provide} from '@angular/core';
-import {ApiService} from '../../common/services/api.service';
 import {Observable} from 'rxjs';
-import {TestComponentBuilder} from '@angular/core/testing/test_component_builder';
+import {ApiService} from '../../common/services/api.service';
+import {TestDirective} from '../../common/directives/test.directive';
 
 let data = require('../../../data/albums.json');
 
@@ -21,7 +21,7 @@ describe('Component: Test', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
       providers: [provide(ApiService, {useClass: MockApiService})],
-      declarations: [TestComponent]
+      declarations: [TestComponent, TestDirective]
     });
     componentFixture = TestBed.createComponent(TestComponent);
   });
@@ -41,6 +41,14 @@ describe('Component: Test', () => {
     componentFixture.componentInstance.ngOnInit();
     componentFixture.detectChanges();
     expect(element.querySelectorAll('li').length).toEqual(data.albums.length);
+  });
+
+  it('should test the directive', () => {
+    const element = componentFixture.nativeElement;
+    const el = element.querySelector('div[appTestDirective]');
+    expect(el.style.backgroundColor).toBe('yellow');
+    el.click();
+    expect(el.style.backgroundColor).toBe('blue');
   });
 
 
