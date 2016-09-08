@@ -6,8 +6,8 @@ import {Observable, BehaviorSubject} from "rxjs/Rx";
 
 @Injectable()
 export class ApiService {
-  private _albums = new BehaviorSubject<Array>([]);
-  private _albumData = new BehaviorSubject<Array>([]);
+  private _albums = new BehaviorSubject<Array<any>>([]);
+  private _albumData = new BehaviorSubject<Array<any>>([]);
   albums = this._albums.asObservable();
   albumData = this._albumData.asObservable();
 
