@@ -8,6 +8,7 @@
 
 <ul>
   <li *ngFor="let album of albums;">
+    <h3>{{ album.name | test : 2 }}</h3>
     <h3>{{ album.name }}</h3>
     <p> {{ album.artist }} </p>
     <img [src]="album.image" />
