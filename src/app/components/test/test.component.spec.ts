@@ -12,41 +12,36 @@ let data = require('../../../data/albums.json');
 class MockApiService {
   albums = Observable.of(data.albums);
   getAllAlbums() {
-    console.log('called');
+    return;
   }
 }
 
 describe('Component: Test', () => {
+  let componentFixture;
   beforeEach(() => {
     TestBed.configureTestingModule({
       providers: [provide(ApiService, {useClass: MockApiService})],
+      declarations: [TestComponent]
     });
+    componentFixture = TestBed.createComponent(TestComponent);
   });
 
-  it('should create the component', inject([TestComponentBuilder], (tcb: TestComponentBuilder) => {
-    return tcb.createAsync(TestComponent).then((componentFixture) => {
-      expect(componentFixture.componentInstance).toBeTruthy();
-      // componentFixture.detectChanges();
-      // expect(element.querySelectorAll('span').length).toBe(1);
-    });
-  }));
+  it('should create the component', () => {
+    expect(componentFixture.componentInstance).toBeTruthy();
+  });
 
-  it('should be able to get albums', inject([TestComponentBuilder], (tcb: TestComponentBuilder) => {
-    return tcb.createAsync(TestComponent).then((componentFixture) => {
-      const component = componentFixture.componentInstance;
-      component.ngOnInit();
-      expect(component.albums).toEqual(data.albums);
-    });
-  }));
+  it('should be able to get albums', () => {
+    const component = componentFixture.componentInstance;
+    component.ngOnInit();
+    expect(component.albums).toEqual(data.albums);
+  });
 
-  it('should render the albums', inject([TestComponentBuilder], (tcb: TestComponentBuilder) => {
-    return tcb.createAsync(TestComponent).then((componentFixture) => {
-      const element = componentFixture.nativeElement;
-      componentFixture.componentInstance.ngOnInit();
-      componentFixture.detectChanges();
-      expect(element.querySelectorAll('li').length).toEqual(data.albums.length);
-    });
-  }));
+  it('should render the albums', () => {
+    const element = componentFixture.nativeElement;
+    componentFixture.componentInstance.ngOnInit();
+    componentFixture.detectChanges();
+    expect(element.querySelectorAll('li').length).toEqual(data.albums.length);
+  });
 
 
 
