@@ -2,6 +2,7 @@
 
 import { TestBed, async, inject } from '@angular/core/testing';
 import { TestComponent } from './test.component';
+import { TestPipe } from '../../common/pipes/test.pipe';
 import {provide} from '@angular/core';
 import {Observable} from 'rxjs';
 import {ApiService} from '../../common/services/api.service';
@@ -21,7 +22,7 @@ describe('Component: Test', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
       providers: [provide(ApiService, {useClass: MockApiService})],
-      declarations: [TestComponent, TestDirective]
+      declarations: [TestComponent, TestDirective, TestPipe]
     });
     componentFixture = TestBed.createComponent(TestComponent);
   });
