@@ -30,4 +30,18 @@ describe('App: Cli', () => {
     let compiled = fixture.debugElement.nativeElement;
     expect(compiled.querySelector('h1').textContent).toContain('app works!');
   }));
+
+  it(`should have sayHello function retuing 'Hello world'`, async(() => {
+    let fixture = TestBed.createComponent(AppComponent);
+    let app = fixture.debugElement.componentInstance;
+    expect(app.sayHello()).toEqual('Hello world');
+  }));
+
+  it('should render sayhello in a h2 tag', async(() => {
+    let fixture = TestBed.createComponent(AppComponent);
+    fixture.detectChanges();
+    let compiled = fixture.debugElement.nativeElement;
+    expect(compiled.querySelector('h2').textContent).toContain('Hello world');
+  }));
+
 });

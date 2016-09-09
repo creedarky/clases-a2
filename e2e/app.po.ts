@@ -1,4 +1,4 @@
-import { browser, element, by } from 'protractor/globals';
+import { browser, element, by, $$ } from 'protractor/globals';
 
 export class CliPage {
   navigateTo() {
@@ -7,5 +7,9 @@ export class CliPage {
 
   getParagraphText() {
     return element(by.css('app-root h1')).getText();
+  }
+
+  getAlbums() {
+    return $$('li');
   }
 }

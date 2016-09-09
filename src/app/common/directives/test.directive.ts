@@ -1,10 +1,26 @@
-import { Directive } from '@angular/core';
+import {Directive, ElementRef, Renderer, Output, EventEmitter, HostListener} from '@angular/core';
 
 @Directive({
-  selector: '[apptest]'
+  selector: '[appTestDirective]'
 })
 export class TestDirective {
+  renderer: Renderer;
+  el: ElementRef;
 
-  constructor() { }
+  @Output() changes = new EventEmitter();
+
+
+  constructor(el: ElementRef, renderer: Renderer) {
+    this.renderer = renderer;
+    this.el = el;
+    renderer.setElementStyle(el.nativeElement, 'backgroundColor', 'yellow');
+  }
+
+  @HostListener('click', ['$event.target'])
+  clicked(target) {
+    this.renderer.setElementStyle(this.el.nativeElement, 'backgroundColor', 'blue');
+  }
+
+
 
 }

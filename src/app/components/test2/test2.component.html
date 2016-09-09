@@ -1,17 +1,10 @@
 <p>
-  test works!
+  test2 works!
 </p>
-
-<div appTestDirective>
- Directive
-</div>
-
 <ul>
   <li *ngFor="let album of albums;">
-    <h3>{{ album.name | test : 2 }}</h3>
     <h3>{{ album.name }}</h3>
     <p> {{ album.artist }} </p>
     <img [src]="album.image" />
-
   </li>
 </ul>
